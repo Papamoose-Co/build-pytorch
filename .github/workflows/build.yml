@@ -20,9 +20,6 @@ permissions:
   packages: write
 
 jobs:
-  - name: Get some space back
-    run: |
-      rm -rf /opt/hostedtoolcache
 
   build-and-push:
     runs-on: ubuntu-latest
@@ -42,6 +39,10 @@ jobs:
               description: Ubuntu 24.04 container for running PyTorch
 
     steps:
+      - name: Get some storage space back
+        run: |
+          rm -rf /opt/hostedtoolcache
+
       - name: Checkout code
         uses: actions/checkout@v3
 
