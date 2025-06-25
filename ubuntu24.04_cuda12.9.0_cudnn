@@ -34,7 +34,8 @@ RUN git checkout v2.7.0 && \
     git submodule update --init --recursive
 
 # Build PyTorch and install wheel
-RUN python3 setup.py bdist_wheel -d /opt/wheels
+RUN mkdir -p /opt/wheels
+RUN python3 setup.py bdist_wheel
 
 # Optional: Don't install inside container unless needed
 #RUN python3 -m pip install --break-system-packages dist/*.whl

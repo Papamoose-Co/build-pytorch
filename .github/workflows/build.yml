@@ -42,6 +42,7 @@ jobs:
       - name: Get some storage space back
         run: |
           rm -rf /opt/hostedtoolcache
+          du -csh /*
 
       - name: Checkout code
         uses: actions/checkout@v3
