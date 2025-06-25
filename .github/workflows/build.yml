@@ -41,15 +41,14 @@ jobs:
     steps:
       - name: Get some storage space back
         run: |
-          du -csh /* 2>/dev/null
-          sudo swapoff -a
-          sudo rm -rf /usr/local/.ghcup
-          sudo rm -rf /opt/hostedtoolcache/CodeQL
-          sudo rm -rf /usr/local/lib/android/sdk/ndk
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /opt/ghc
-          sudo rm -rf /usr/local/share/boost
-          du -csh /* 2>/dev/null
+          du -csh /* 2>/dev/null|sort -h
+          rm -rf /usr/local/.ghcup
+          rm -rf /opt/hostedtoolcache/CodeQL
+          rm -rf /usr/local/lib/android/sdk/ndk
+          rm -rf /usr/share/dotnet
+          rm -rf /opt/ghc
+          rm -rf /usr/local/share/boost
+          du -csh /* 2>/dev/null|sort -h
 
       - name: Checkout code
         uses: actions/checkout@v3
