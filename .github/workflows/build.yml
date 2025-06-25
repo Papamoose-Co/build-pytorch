@@ -41,7 +41,7 @@ jobs:
     steps:
       - name: Get some storage space back
         run: |
-          du -csh /*
+          du -csh /* 2>/dev/null
           sudo swapoff -a
           sudo rm -rf /usr/local/.ghcup
           sudo rm -rf /opt/hostedtoolcache/CodeQL
@@ -49,7 +49,7 @@ jobs:
           sudo rm -rf /usr/share/dotnet
           sudo rm -rf /opt/ghc
           sudo rm -rf /usr/local/share/boost
-          du -csh /*
+          du -csh /* 2>/dev/null
 
       - name: Checkout code
         uses: actions/checkout@v3
