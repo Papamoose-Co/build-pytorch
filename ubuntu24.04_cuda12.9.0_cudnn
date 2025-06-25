@@ -14,7 +14,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  && rm -rf /var/lib/apt/lists/*
 
 # Upgrade pip and install Python packages
-#RUN python3 -m pip install --upgrade --break-system-packages pip
 RUN python3 -m pip install --break-system-packages typing_extensions pyyaml setuptools cmake numpy ninja
 
 # Set environment variables for CUDA build
@@ -35,7 +34,9 @@ RUN git checkout v2.7.0 && \
     git submodule update --init --recursive
 
 # Build PyTorch and install wheel
-RUN python3 setup.py bdist_wheel
-RUN python3 -m pip install --break-system-packages dist/*.whl
+RUN python3 setup.py bdist_wheel -d /opt/wheels
 
-CMD [ "python3" ]
+# Optional: Don't install inside container unless needed
+#RUN python3 -m pip install --break-system-packages dist/*.whl
+
+CMD [ "bash" ]
