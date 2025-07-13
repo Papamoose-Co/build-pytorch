@@ -43,4 +43,8 @@ RUN python3 setup.py bdist_wheel
 # Optional: Don't install inside container unless needed
 #RUN python3 -m pip install --break-system-packages dist/*.whl
 
-CMD [ "bash" ]
+COPY copy.sh /copy.sh
+RUN chmod +x /copy.sh
+
+VOLUME ["/target"]
+CMD ["/copy.sh"]
