@@ -32,7 +32,7 @@ ENV PATH=/usr/local/cuda/bin:$PATH \
 WORKDIR /opt
 RUN git clone --recursive https://github.com/pytorch/pytorch.git
 WORKDIR /opt/pytorch
-RUN git checkout v2.7.0 && \
+RUN git checkout v2.7.1 && \
     git submodule sync && \
     git submodule update --init --recursive
 
